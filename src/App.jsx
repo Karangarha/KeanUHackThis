@@ -1,5 +1,7 @@
+import "./index.css";
+
 function App() {
-  return <></>;
+  return <div className="text-3xl font-bold underline">KeanUHackThis</div>;
 }
 
 export default App;
