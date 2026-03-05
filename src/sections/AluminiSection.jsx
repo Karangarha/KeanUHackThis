@@ -1,5 +1,5 @@
 const AluminiSection = () => {
-  return <section></section>;
+  return <section id="alumini"></section>;
 };
 
 export default AluminiSection;

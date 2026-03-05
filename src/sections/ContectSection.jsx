@@ -1,5 +1,5 @@
 const ContectSection = () => {
-  return <section></section>;
+  return <section id="contact"></section>;
 };
 
 export default ContectSection;
