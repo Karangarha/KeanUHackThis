@@ -1,11 +1,20 @@
 import "./index.css";
+import Navbar from "./components/Navbar";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <header className="App-header">
-        <h1 className="text-6xl font-bold tracking-wide">KeanUHackThis</h1>
-      </header>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

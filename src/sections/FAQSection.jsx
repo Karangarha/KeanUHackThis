@@ -1,5 +1,5 @@
 const FAQSection = () => {
-  return <section></section>;
+  return <section id="faq"></section>;
 };
 
 export default FAQSection;

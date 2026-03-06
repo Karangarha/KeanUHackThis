@@ -1,5 +1,5 @@
 const ThemeSection = () => {
-  return <section></section>;
+  return <section id="theme"></section>;
 };
 
 export default ThemeSection;

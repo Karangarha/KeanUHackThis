@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import "@fontsource-variable/orbitron";
+
+
+html {
+    font-family: 'Orbitron Variable', sans-serif;
+    /* background: linear-gradient(to bottom, #0a0e27, #1a0b2e, #16213e); */
+    background-color: #0a0e27;
+}

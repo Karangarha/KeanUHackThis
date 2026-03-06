@@ -1,5 +1,5 @@
 const ScheduleSection = () => {
-  return <section></section>;
+  return <section id="schedule"></section>;
 };
 
 export default ScheduleSection;
