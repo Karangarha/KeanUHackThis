@@ -16,6 +16,7 @@ const ThemeSection = () => {
   const cloudsRef = useRef(null);
   const earthZoomRef = useRef(null);
   const secLabelRef = useRef(null);
+  const secTextRef = useRef(null);
   const pdotsRef = useRef(null);
   const nebulaRef = useRef(null);
   const stickyRef = useRef(null);
@@ -47,30 +48,30 @@ const ThemeSection = () => {
   const WP = useMemo(
     () => [
       { p: 0.0, x: -7, y: 50 },
-      { p: 0.055, x: 5, y: 49 },
-      { p: 0.12, x: 11, y: 45 },
-      { p: 0.185, x: 17, y: 42 },
-      { p: 0.255, x: 22, y: 46 },
-      { p: 0.32, x: 29, y: 52 },
-      { p: 0.38, x: 37, y: 57 },
-      { p: 0.455, x: 44, y: 51 },
-      { p: 0.53, x: 51, y: 44 },
-      { p: 0.61, x: 58, y: 40 },
-      { p: 0.68, x: 65, y: 45 },
-      { p: 0.745, x: 72, y: 50 },
-      { p: 0.81, x: 80, y: 53 },
-      { p: 0.87, x: 88, y: 47 },
-      { p: 0.93, x: 95, y: 44 },
+      { p: 0.04, x: 5, y: 49 },
+      { p: 0.09, x: 11, y: 45 },
+      { p: 0.14, x: 17, y: 42 },
+      { p: 0.19, x: 22, y: 46 },
+      { p: 0.24, x: 29, y: 52 },
+      { p: 0.29, x: 37, y: 57 },
+      { p: 0.35, x: 44, y: 51 },
+      { p: 0.41, x: 51, y: 44 },
+      { p: 0.47, x: 58, y: 40 },
+      { p: 0.52, x: 65, y: 45 },
+      { p: 0.57, x: 72, y: 50 },
+      { p: 0.61, x: 80, y: 53 },
+      { p: 0.66, x: 88, y: 47 },
+      { p: 0.70, x: 95, y: 44 },
     ],
     []
   );
 
   const EVENTS = useMemo(
     () => ({
-      mercury: { arrive: 0.185, panelIn: 0.205, panelOut: 0.355 },
-      venus: { arrive: 0.38, panelIn: 0.4, panelOut: 0.545 },
-      earth: { arrive: 0.61, panelIn: 0.63, panelOut: 0.765 },
-      mars: { arrive: 0.81, panelIn: 0.83, panelOut: 0.93 },
+      mercury: { arrive: 0.14, panelIn: 0.15, panelOut: 0.24 },
+      venus: { arrive: 0.29, panelIn: 0.30, panelOut: 0.40 },
+      earth: { arrive: 0.47, panelIn: 0.48, panelOut: 0.56 },
+      mars: { arrive: 0.61, panelIn: 0.62, panelOut: 0.70 },
     }),
     []
   );
@@ -82,15 +83,15 @@ const ThemeSection = () => {
       style.id = styleId;
       style.textContent = `
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;1,300&display=swap');
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         :root{--cyan:#00d4ff;--blue:#0060e0;--deep:#020818;--font-h:'Orbitron','Courier New',monospace;--font-b:'Exo 2',sans-serif}
-        html{scroll-behavior:auto}
-        body{background:var(--deep);color:#fff;font-family:var(--font-b);overflow-x:hidden}
-        .htr-root{background:var(--deep);color:#fff;font-family:var(--font-b);overflow-x:hidden}
+        .htr-root{background:var(--deep);color:#fff;font-family:var(--font-b)}
         .sec-label{position:absolute;top:5%;left:50%;transform:translateX(-50%);z-index:30;text-align:center;pointer-events:none;width:100%}
         .sec-label h1{font-family:var(--font-h);font-size:clamp(1.2rem,3.5vw,3.5rem);font-weight:900;background:linear-gradient(135deg,#fff 20%,var(--cyan) 60%,var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.32em;line-height:1.2;margin-left:.18em}
-        .sec-label p{font-family:var(--font-b);font-size:clamp(.9rem,1.5vw,1.25rem);color:rgba(180,220,255,.6);margin-top:1.2rem;font-weight:300;letter-spacing:.08em}
-        #space-section-react{position:relative;height:500vh}
+        .sec-label p{font-family:var(--font-h);font-size:clamp(.9rem,1.5vw,1.25rem);color:rgba(180,220,255,.6);margin-top:1.2rem;font-weight:300;letter-spacing:.08em}
+        .sec-text{position:absolute;top:5%;left:50%;transform:translateX(-50%);z-index:29;text-align:center;pointer-events:none;width:90%;max-width:800px;opacity:0}
+        .sec-text p{font-family:var(--font-b);font-size:clamp(.85rem,1.3vw,1.1rem);color:rgba(220,240,255,.8);line-height:1.6;margin-bottom:1.5rem;font-weight:300}
+        .sec-text .highlight{color:var(--cyan);font-weight:500}
+        #space-section-react{position:relative;height:1000vh}
         .sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;background:var(--deep)}
         #starfield-react{position:absolute;inset:0;width:100%;height:100%;z-index:0}
         .nebula{position:absolute;inset:0;z-index:1;pointer-events:none}
@@ -171,7 +172,7 @@ const ThemeSection = () => {
     let animId = 0;
     let orbitPoints = [];
 
-    const ZOOM_START = 0.93;
+    const ZOOM_START = 0.70;
     const ZOOM_END = 1.0;
     const SVG_W = 1000;
     const SVG_H = 600;
@@ -407,12 +408,23 @@ const ThemeSection = () => {
 
     function updateScene(progress) {
       if (secLabelRef.current) {
-        secLabelRef.current.style.opacity = String(Math.max(0, 1 - smooth(invLerp(0, 0.12, progress))));
+        const labelAlpha = Math.max(0, 1 - smooth(invLerp(0, 0.08, progress)));
+        secLabelRef.current.style.opacity = String(labelAlpha);
         if (progress > 0.01) {
           secLabelRef.current.style.transform = `translateX(-50%) translateY(${-progress * 200}px)`;
         } else {
           secLabelRef.current.style.transform = `translateX(-50%)`;
         }
+      }
+
+      if (secTextRef.current) {
+        // Fade in after the main label fades out, then fade out before reaching earth
+        const textIn = smooth(invLerp(0.08, 0.12, progress));
+        const textOut = 1 - smooth(invLerp(0.65, 0.70, progress));
+        const textAlpha = Math.min(textIn, textOut);
+        
+        secTextRef.current.style.opacity = String(textAlpha);
+        secTextRef.current.style.transform = `translateX(-50%)`;
       }
 
       if (progress < ZOOM_START) {
@@ -505,7 +517,7 @@ const ThemeSection = () => {
       trigger: spaceSectionRef.current,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 0.8,
+      scrub: 2.5,
       onUpdate: (self) => updateScene(self.progress),
     });
 
@@ -564,9 +576,15 @@ const ThemeSection = () => {
               <h1>
                 HACKATHON
                 <br />
-                TRACKS
+                THEMES
               </h1>
               <p>Chart your course through the cosmos</p>
+            </div>
+
+            <div className="sec-text" ref={secTextRef}>
+              <p>We use the word <span className="highlight">Themes</span> instead of tracks to encourage creative freedom and interdisciplinary ideas.</p>
+              <p>Your project does not need to fit perfectly into one category &mdash; themes are meant to guide inspiration, not limit innovation.</p>
+              <p className="highlight" style={{ marginTop: '2rem', letterSpacing: '0.1em' }}>THEMES INCLUDE:</p>
             </div>
 
             <div className="planet pl-mercury" ref={planetRefs.mercury}>
@@ -632,15 +650,15 @@ const ThemeSection = () => {
               <div className="pn-tag">Mercury</div>
               <div className="pn-track">Healthcare</div>
               <div className="pn-div" />
-              <div className="pn-desc">Build solutions that improve patient care, medical access, health data systems, wellness tools, or healthcare technology.</div>
+              <div className="pn-desc">Innovations that improve wellness, care, and accessibility.</div>
             </div>
 
             <div className="track-panel pn-venus" ref={panelRefs.venus}>
               <div className="pn-icon">💼</div>
               <div className="pn-tag">Venus</div>
-              <div className="pn-track">Business &amp; Expertise</div>
+              <div className="pn-track">Business &amp; Enterprise</div>
               <div className="pn-div" />
-              <div className="pn-desc">Build solutions for entrepreneurship, finance, productivity, operations, strategy, collaboration, or professional growth.</div>
+              <div className="pn-desc">Tools that help people and organizations work smarter.</div>
             </div>
 
             <div className="track-panel pn-earth" ref={panelRefs.earth}>
@@ -648,15 +666,15 @@ const ThemeSection = () => {
               <div className="pn-tag">Earth</div>
               <div className="pn-track">Sustainability</div>
               <div className="pn-div" />
-              <div className="pn-desc">Build solutions that address climate, clean energy, environmental impact, smart cities, conservation, or sustainable living.</div>
+              <div className="pn-desc">Tech solutions for a cleaner, greener future.</div>
             </div>
 
             <div className="track-panel pn-mars" ref={panelRefs.mars}>
               <div className="pn-icon">🎓</div>
               <div className="pn-tag">Mars</div>
-              <div className="pn-track">Education</div>
+              <div className="pn-track">Entertainment & Education</div>
               <div className="pn-div" />
-              <div className="pn-desc">Build solutions for students, teachers, learning platforms, accessibility, skill-building, academic support, or the future of education.</div>
+              <div className="pn-desc">Creative, interactive, and impactful learning and play.</div>
             </div>
 
             <div className="earth-zoom" ref={earthZoomRef} />
