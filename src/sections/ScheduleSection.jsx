@@ -108,7 +108,7 @@ const ScheduleSection = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="w-full bg-[#82B1FF]/40 backdrop-blur-2xl border-2 border-white/20 rounded-3xl p-8 md:p-14 shadow-[0_8px_32px_rgba(0,0,0,0.15)] flex flex-col items-center text-center relative overflow-hidden"
+              className="w-full h-[400px] md:h-[450px] bg-[#82B1FF]/40 backdrop-blur-2xl border-2 border-white/20 rounded-3xl p-8 md:p-14 shadow-[0_8px_32px_rgba(0,0,0,0.15)] flex flex-col items-center justify-center text-center relative overflow-hidden"
             >
               {/* Glossy top highlight */}
               <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none rounded-t-3xl border-t border-white/30"></div>
