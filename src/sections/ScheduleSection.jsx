@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const day1Events = [
@@ -35,6 +35,22 @@ const day2Events = [
 const ScheduleSection = () => {
   const [activeDay, setActiveDay] = useState(1);
   const [activeEventIndex, setActiveEventIndex] = useState(0);
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end end"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 60,
+    damping: 20,
+    restDelta: 0.001
+  });
+
+  const leftCloudX = useTransform(smoothProgress, [0, 1], ["15vw", "-60vw"]);
+  const rightCloudX = useTransform(smoothProgress, [0, 1], ["-15vw", "60vw"]);
+  const cloudOpacity = useTransform(smoothProgress, [0, 0.9, 1], [1, 1, 0]);
 
   const currentEvents = activeDay === 1 ? day1Events : day2Events;
   const currentEvent = currentEvents[activeEventIndex];
@@ -53,8 +69,74 @@ const ScheduleSection = () => {
   };
 
   return (
-    <section id="schedule" className="w-full min-h-[100vh] py-24 flex flex-col items-center justify-center relative overflow-hidden z-10 bg-[rgb(21,96,172)]">
+    <section id="schedule" ref={sectionRef} className="w-full min-h-[100vh] py-24 flex flex-col items-center justify-center relative overflow-hidden z-10 bg-[rgb(21,96,172)]">
       
+      {/* Spreading Background Clouds */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div style={{ x: leftCloudX, opacity: cloudOpacity }} className="absolute left-0 top-0 bottom-0 w-1/2 h-full z-0">
+          {/* Cloud 1 */}
+          <div className="absolute w-[220px] h-[70px] bg-[#eef5ff]/95 rounded-full blur-[3px] right-[-40px] top-[10%] shadow-lg">
+               <div className="absolute w-[110px] h-[110px] bg-[#eef5ff]/95 rounded-full -top-[60px] left-[30px]"></div>
+               <div className="absolute w-[90px] h-[90px] bg-[#eef5ff]/95 rounded-full -top-[40px] right-[20px]"></div>
+          </div>
+          {/* Cloud 2 */}
+          <div className="absolute w-[300px] h-[90px] bg-[#eef5ff]/90 rounded-full blur-[4px] right-[10%] top-[25%]">
+               <div className="absolute w-[150px] h-[150px] bg-[#eef5ff]/90 rounded-full -top-[70px] left-[50px]"></div>
+               <div className="absolute w-[110px] h-[110px] bg-[#eef5ff]/90 rounded-full -top-[50px] right-[40px]"></div>
+          </div>
+          {/* Cloud 3 */}
+          <div className="absolute w-[200px] h-[60px] bg-[#eef5ff]/85 rounded-full blur-[5px] right-[-80px] top-[40%]">
+               <div className="absolute w-[100px] h-[100px] bg-[#eef5ff]/85 rounded-full -top-[50px] left-[30px]"></div>
+          </div>
+          {/* Cloud 4 */}
+          <div className="absolute w-[250px] h-[80px] bg-[#eef5ff]/95 rounded-full blur-[3px] right-[30%] top-[55%]">
+               <div className="absolute w-[120px] h-[120px] bg-[#eef5ff]/95 rounded-full -top-[60px] left-[40px]"></div>
+               <div className="absolute w-[100px] h-[100px] bg-[#eef5ff]/95 rounded-full -top-[40px] right-[30px]"></div>
+          </div>
+          {/* Cloud 5 */}
+          <div className="absolute w-[320px] h-[100px] bg-[#eef5ff]/90 rounded-full blur-[4px] right-[-20px] top-[75%] shadow-md">
+               <div className="absolute w-[160px] h-[160px] bg-[#eef5ff]/90 rounded-full -top-[80px] left-[60px]"></div>
+               <div className="absolute w-[120px] h-[120px] bg-[#eef5ff]/90 rounded-full -top-[50px] right-[30px]"></div>
+          </div>
+          {/* Cloud 6 */}
+          <div className="absolute w-[180px] h-[50px] bg-[#eef5ff]/80 rounded-full blur-[6px] right-[25%] top-[90%]">
+               <div className="absolute w-[80px] h-[80px] bg-[#eef5ff]/80 rounded-full -top-[40px] left-[20px]"></div>
+          </div>
+        </motion.div>
+
+        <motion.div style={{ x: rightCloudX, opacity: cloudOpacity }} className="absolute right-0 top-0 bottom-0 w-1/2 h-full z-0">
+          {/* Cloud A */}
+          <div className="absolute w-[350px] h-[110px] bg-[#eef5ff]/95 rounded-full blur-[3px] left-[-80px] top-[15%] shadow-lg">
+               <div className="absolute w-[180px] h-[180px] bg-[#eef5ff]/95 rounded-full -top-[90px] left-[60px]"></div>
+               <div className="absolute w-[130px] h-[130px] bg-[#eef5ff]/95 rounded-full -top-[60px] right-[40px]"></div>
+          </div>
+          {/* Cloud B */}
+          <div className="absolute w-[240px] h-[75px] bg-[#eef5ff]/90 rounded-full blur-[4px] left-[15%] top-[30%]">
+               <div className="absolute w-[120px] h-[120px] bg-[#eef5ff]/90 rounded-full -top-[60px] left-[30px]"></div>
+               <div className="absolute w-[100px] h-[100px] bg-[#eef5ff]/90 rounded-full -top-[40px] right-[30px]"></div>
+          </div>
+          {/* Cloud C */}
+          <div className="absolute w-[280px] h-[85px] bg-[#eef5ff]/85 rounded-full blur-[4px] left-[-20px] top-[45%]">
+               <div className="absolute w-[140px] h-[140px] bg-[#eef5ff]/85 rounded-full -top-[70px] left-[40px]"></div>
+               <div className="absolute w-[110px] h-[110px] bg-[#eef5ff]/85 rounded-full -top-[50px] right-[40px]"></div>
+          </div>
+          {/* Cloud D */}
+          <div className="absolute w-[200px] h-[65px] bg-[#eef5ff]/95 rounded-full blur-[5px] left-[40%] top-[60%]">
+               <div className="absolute w-[100px] h-[100px] bg-[#eef5ff]/95 rounded-full -top-[50px] left-[20px]"></div>
+               <div className="absolute w-[80px] h-[80px] bg-[#eef5ff]/95 rounded-full -top-[30px] right-[20px]"></div>
+          </div>
+          {/* Cloud E */}
+          <div className="absolute w-[300px] h-[95px] bg-[#eef5ff]/90 rounded-full blur-[4px] left-[-50px] top-[80%] shadow-md">
+               <div className="absolute w-[150px] h-[150px] bg-[#eef5ff]/90 rounded-full -top-[70px] left-[50px]"></div>
+               <div className="absolute w-[110px] h-[110px] bg-[#eef5ff]/90 rounded-full -top-[40px] right-[30px]"></div>
+          </div>
+          {/* Cloud F */}
+          <div className="absolute w-[220px] h-[60px] bg-[#eef5ff]/85 rounded-full blur-[5px] left-[25%] top-[95%]">
+               <div className="absolute w-[110px] h-[110px] bg-[#eef5ff]/85 rounded-full -top-[50px] left-[30px]"></div>
+          </div>
+        </motion.div>
+      </div>
+
       {/* Heading */}
       <motion.h2
         className="text-6xl md:text-8xl font-black mb-10 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
