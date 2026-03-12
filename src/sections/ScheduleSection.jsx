@@ -53,7 +53,7 @@ const ScheduleSection = () => {
   };
 
   return (
-    <section id="schedule" className="w-full min-h-[100vh] py-24 flex flex-col items-center justify-center relative overflow-hidden z-10">
+    <section id="schedule" className="w-full min-h-[100vh] py-24 flex flex-col items-center justify-center relative overflow-hidden z-10 bg-[#1565c0]">
       
       {/* Heading */}
       <motion.h2
