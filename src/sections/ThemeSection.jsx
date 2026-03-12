@@ -17,7 +17,6 @@ const ThemeSection = () => {
   const earthZoomRef = useRef(null);
   const secLabelRef = useRef(null);
   const secTextRef = useRef(null);
-  const pdotsRef = useRef(null);
   const nebulaRef = useRef(null);
   const stickyRef = useRef(null);
   const spaceSectionRef = useRef(null);
@@ -42,8 +41,6 @@ const ThemeSection = () => {
     earth: useRef(null),
     mars: useRef(null),
   };
-
-  const dotRefs = useRef([]);
 
   const WP = useMemo(
     () => [
@@ -136,24 +133,28 @@ const ThemeSection = () => {
         .earth-zoom{position:absolute;width:112px;height:112px;border-radius:50%;background:radial-gradient(circle at 34% 32%,#7dd4f0,#2e7d32 42%,#1565c0 72%,#0d3a6e);box-shadow:0 0 50px 20px rgba(80,180,240,.4);z-index:25;opacity:0;pointer-events:none;transform-origin:center center}
         .atmo{position:absolute;inset:0;z-index:26;background:radial-gradient(ellipse at 50% 100%,#1e5799 0%,#1565c0 40%,#0a3a6e 100%);opacity:0;pointer-events:none}
         .clouds{position:absolute;inset:0;z-index:28;opacity:0;pointer-events:none;overflow:hidden}
-        .cl-row{position:absolute;top:0;left:0;right:0;height:220px}
+        .cl-row{position:absolute;inset:0}
         .cl{position:absolute;background:rgba(255,255,255,.88);border-radius:80px;filter:blur(4px)}
         .cl::before,.cl::after{content:'';position:absolute;background:inherit;border-radius:80px}
-        .cl1{width:220px;height:65px;left:-3%;top:18px}.cl1::before{width:110px;height:88px;top:-32px;left:32px;border-radius:50%}.cl1::after{width:88px;height:68px;top:-22px;right:28px;border-radius:50%}
-        .cl2{width:300px;height:72px;right:-2%;top:6px}.cl2::before{width:130px;height:96px;top:-38px;left:44px;border-radius:50%}.cl2::after{width:105px;height:75px;top:-28px;right:52px;border-radius:50%}
-        .cl3{width:170px;height:54px;left:18%;top:42px}.cl3::before{width:84px;height:72px;top:-26px;left:26px;border-radius:50%}
-        .cl4{width:240px;height:68px;left:46%;top:10px}.cl4::before{width:118px;height:90px;top:-34px;left:36px;border-radius:50%}.cl4::after{width:95px;height:68px;top:-22px;right:42px;border-radius:50%}
-        .cl5{width:190px;height:58px;right:12%;top:50px}.cl5::before{width:96px;height:78px;top:-30px;left:28px;border-radius:50%}
+        .cl1{width:220px;height:65px;left:-3%;top:5%}.cl1::before{width:110px;height:88px;top:-32px;left:32px;border-radius:50%}.cl1::after{width:88px;height:68px;top:-22px;right:28px;border-radius:50%}
+        .cl2{width:300px;height:72px;right:-2%;top:12%}.cl2::before{width:130px;height:96px;top:-38px;left:44px;border-radius:50%}.cl2::after{width:105px;height:75px;top:-28px;right:52px;border-radius:50%}
+        .cl3{width:170px;height:54px;left:18%;top:25%}.cl3::before{width:84px;height:72px;top:-26px;left:26px;border-radius:50%}
+        .cl4{width:240px;height:68px;left:46%;top:8%}.cl4::before{width:118px;height:90px;top:-34px;left:36px;border-radius:50%}.cl4::after{width:95px;height:68px;top:-22px;right:42px;border-radius:50%}
+        .cl5{width:190px;height:58px;right:12%;top:30%}.cl5::before{width:96px;height:78px;top:-30px;left:28px;border-radius:50%}
+        .cl6{width:210px;height:60px;left:8%;top:45%}.cl6::before{width:100px;height:80px;top:-30px;left:30px;border-radius:50%}.cl6::after{width:80px;height:60px;top:-20px;right:30px;border-radius:50%}
+        .cl7{width:280px;height:70px;right:15%;top:55%}.cl7::before{width:120px;height:90px;top:-35px;left:40px;border-radius:50%}.cl7::after{width:90px;height:70px;top:-25px;right:50px;border-radius:50%}
+        .cl8{width:160px;height:50px;left:25%;top:70%}.cl8::before{width:80px;height:70px;top:-25px;left:20px;border-radius:50%}
+        .cl9{width:250px;height:65px;left:55%;top:80%}.cl9::before{width:110px;height:85px;top:-30px;left:35px;border-radius:50%}.cl9::after{width:85px;height:65px;top:-20px;right:40px;border-radius:50%}
+        .cl10{width:180px;height:55px;right:8%;top:88%}.cl10::before{width:90px;height:75px;top:-25px;left:25px;border-radius:50%}
+        .cl11{width:230px;height:66px;left:35%;top:85%}.cl11::before{width:115px;height:88px;top:-32px;left:34px;border-radius:50%}.cl11::after{width:92px;height:68px;top:-22px;right:30px;border-radius:50%}
+        .cl12{width:200px;height:60px;right:35%;top:65%}.cl12::before{width:100px;height:80px;top:-30px;left:30px;border-radius:50%}
+        .cl13{width:175px;height:56px;left:75%;top:45%}.cl13::before{width:90px;height:74px;top:-28px;left:26px;border-radius:50%}
+        .cl14{width:260px;height:68px;left:-5%;top:60%}.cl14::before{width:125px;height:94px;top:-36px;left:42px;border-radius:50%}.cl14::after{width:100px;height:72px;top:-26px;right:48px;border-radius:50%}
+
         @keyframes cdrift{0%{transform:translateX(0)}100%{transform:translateX(22px)}}
         @keyframes cdrift2{0%{transform:translateX(0)}100%{transform:translateX(-18px)}}
         .cl1{animation:cdrift 9s ease-in-out infinite alternate}.cl2{animation:cdrift2 11s ease-in-out infinite alternate}.cl3{animation:cdrift 13s ease-in-out infinite alternate 1.5s}.cl4{animation:cdrift2 8s ease-in-out infinite alternate .8s}.cl5{animation:cdrift 10s ease-in-out infinite alternate 2.5s}
-        .pdots{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:14px;align-items:center;z-index:30;opacity:0;transition:opacity .5s ease}
-        .pdots.show{opacity:1}
-        .pd{width:7px;height:7px;border-radius:50%;border:1px solid rgba(0,212,255,.35);background:transparent;transition:all .45s ease;position:relative;cursor:default}
-        .pd.visited{background:rgba(0,212,255,.4);border-color:rgba(0,212,255,.6);box-shadow:0 0 6px rgba(0,212,255,.4)}
-        .pd.active{background:rgba(0,212,255,.9);border-color:var(--cyan);box-shadow:0 0 14px rgba(0,212,255,.8);transform:scale(1.5)}
-        .pd-lbl{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);font-family:var(--font-h);font-size:.45rem;letter-spacing:.15em;color:rgba(0,212,255,.55);white-space:nowrap;opacity:0;transition:opacity .3s ease;pointer-events:none}
-        .pd.active .pd-lbl{opacity:1}
+        .cl6{animation:cdrift2 10s ease-in-out infinite alternate 0.5s}.cl7{animation:cdrift 12s ease-in-out infinite alternate 1s}.cl8{animation:cdrift2 14s ease-in-out infinite alternate 2s}.cl9{animation:cdrift 9s ease-in-out infinite alternate 1.2s}.cl10{animation:cdrift2 11s ease-in-out infinite alternate 0.7s}.cl11{animation:cdrift 13s ease-in-out infinite alternate 2.2s}.cl12{animation:cdrift2 8s ease-in-out infinite alternate 1.5s}.cl13{animation:cdrift 11s ease-in-out infinite alternate 0.3s}.cl14{animation:cdrift2 12s ease-in-out infinite alternate 1.8s}
 
         @media(max-width:768px){.pl-mercury{width:52px;height:52px;left:14%;top:35%}.pl-venus{width:68px;height:68px;left:35%;top:55%}.pl-earth{width:82px;height:82px;left:62%;top:38%}.pl-mars{width:62px;height:62px;left:83%;top:52%}.rocket-wrap svg{width:62px}.track-panel{width:210px;padding:1rem}.pn-mercury{left:calc(14% + 38px);top:8%}.pn-venus{left:calc(35% - 230px);top:33%}.pn-earth{left:calc(62% + 48px);top:10%}.pn-mars{left:calc(83% - 230px);top:24%}.pn-track{font-size:.85rem}.pn-desc{font-size:.72rem}}
       `;
@@ -466,25 +467,6 @@ const ThemeSection = () => {
         tryFireRing(name, progress);
       });
 
-      if (pdotsRef.current) {
-        pdotsRef.current.classList.toggle('show', progress > 0.18);
-      }
-
-      dotRefs.current.forEach((dot, i) => {
-        if (!dot) return;
-        dot.classList.remove('active', 'visited');
-        const name = planetOrder[i];
-        if (progress >= EVENTS[name].arrive) {
-          if (i < activeIdx) dot.classList.add('visited');
-          else if (i === activeIdx) dot.classList.add('active');
-          else dot.classList.add('visited');
-        }
-        if (i === activeIdx) {
-          dot.classList.remove('visited');
-          dot.classList.add('active');
-        }
-      });
-
       if (progress >= ZOOM_START) {
         const zp = smooth2(invLerp(ZOOM_START, ZOOM_END, progress));
         const maxS = (Math.max(window.innerWidth, window.innerHeight) / 52) * 1.8;
@@ -687,21 +669,16 @@ const ThemeSection = () => {
                 <div className="cl cl3" />
                 <div className="cl cl4" />
                 <div className="cl cl5" />
+                <div className="cl cl6" />
+                <div className="cl cl7" />
+                <div className="cl cl8" />
+                <div className="cl cl9" />
+                <div className="cl cl10" />
+                <div className="cl cl11" />
+                <div className="cl cl12" />
+                <div className="cl cl13" />
+                <div className="cl cl14" />
               </div>
-            </div>
-
-            <div className="pdots" ref={pdotsRef}>
-              {['HEALTHCARE', 'BUSINESS', 'SUSTAIN', 'EDUCATION'].map((label, i) => (
-                <div
-                  key={label}
-                  className="pd"
-                  ref={(el) => {
-                    dotRefs.current[i] = el;
-                  }}
-                >
-                  <span className="pd-lbl">{label}</span>
-                </div>
-              ))}
             </div>
           </div>
         </div>
