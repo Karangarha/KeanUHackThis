@@ -21,8 +21,22 @@ const glowAnimation = {
 
 const MainSection = () => {
   return (
-    <section id="home" className="h-screen w-full">
-      <div className="flex flex-col justify-center items-center h-full text-white gap-1">
+    <section
+      id="home"
+      className="relative h-screen w-full overflow-hidden bg-black"
+    >
+      {/* Background Video */}
+      <video
+        src="/hackathon_wallpaper.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Foreground Content */}
+      <div className="relative z-10 flex flex-col justify-center items-center h-full text-white gap-1 bg-black/30">
         <motion.div {...glowAnimation}>
           <TextType
             text="KeanUHackThis"
