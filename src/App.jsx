@@ -8,7 +8,6 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NotFound />} />
