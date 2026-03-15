@@ -7,10 +7,9 @@ const SponserSection = () => {
   return (
     <section
       id="sponser"
-      className="relative w-screen min-h-screen pb-32 bg-transparent"
+      className="w-full h-full py-4 flex flex-col items-center justify-center relative z-10"
     >
-      <Clouds />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-10 flex flex-col items-center">
         {Object.entries(sponserData).map(([category, items]) => (
           <div key={category} className="w-full flex flex-col items-center">
             <motion.h2
@@ -18,7 +17,7 @@ const SponserSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold text-center text-white mb-8 capitalize tracking-wider drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-4 capitalize tracking-wider drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
             >
               {category}
             </motion.h2>

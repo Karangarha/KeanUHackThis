@@ -32,6 +32,13 @@ const alumni = [
 
 const AlumniSection = () => {
   const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Automatic Loop
   useEffect(() => {
@@ -43,6 +50,7 @@ const AlumniSection = () => {
 
   const getCardProps = (cardIndex) => {
     const diff = (cardIndex - index + alumni.length) % alumni.length;
+    const xOffset = isMobile ? "40%" : "60%";
 
     // Logic for Center, Right (next), and Left (previous)
     if (diff === 0)
@@ -58,8 +66,8 @@ const AlumniSection = () => {
       return {
         position: "right",
         z: 5,
-        x: "60%",
-        scale: 0.8,
+        x: xOffset,
+        scale: isMobile ? 0.7 : 0.8,
         opacity: 0.6,
         rotate: 5,
       };
@@ -67,8 +75,8 @@ const AlumniSection = () => {
       return {
         position: "left",
         z: 5,
-        x: "-60%",
-        scale: 0.8,
+        x: `-${xOffset}`,
+        scale: isMobile ? 0.7 : 0.8,
         opacity: 0.6,
         rotate: -5,
       };
@@ -100,17 +108,19 @@ const AlumniSection = () => {
                 rotateZ: rotate,
               }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="absolute w-72 h-96 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 shadow-2xl flex flex-col items-center justify-center text-center text-white"
+              className="absolute w-56 h-72 md:w-72 md:h-96 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-4 md:p-6 shadow-2xl flex flex-col items-center justify-center text-center text-white"
               style={{ perspective: 1000 }}
             >
               <img
                 src={person.image}
-                className="w-24 h-24 rounded-full border-4 border-blue-400 mb-4 shadow-lg"
+                className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-blue-400 mb-3 md:mb-4 shadow-lg"
                 alt={person.name}
               />
-              <h3 className="text-2xl font-bold">{person.name}</h3>
-              <p className="text-sm text-blue-200 mt-2">{person.role}</p>
-              <div className="mt-6 p-2 bg-blue-600 rounded-lg">
+              <h3 className="text-xl md:text-2xl font-bold">{person.name}</h3>
+              <p className="text-xs md:text-sm text-blue-200 mt-1 md:mt-2">
+                {person.role}
+              </p>
+              <div className="mt-4 md:mt-6 p-2 bg-blue-600 rounded-lg">
                 <span className="text-xs font-bold">in</span>
               </div>
             </motion.div>

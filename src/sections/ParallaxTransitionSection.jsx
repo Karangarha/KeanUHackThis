@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import AlumniSection from "./AluminiSection";
 import ScheduleSection from "./ScheduleSection";
-
+import SponserSection from "./SponserSection";
 const ParallaxTransitionSection = () => {
   const containerRef = useRef(null);
 
@@ -43,9 +43,9 @@ const ParallaxTransitionSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[300vh] bg-transparent"
+      className="relative w-full h-[300vh] bg-main-gradient"
     >
-      <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+      <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[linear-gradient(-115deg,#2c67f2,#62cff4)]">
         {/* --- MOUNTAINS --- */}
         {/* Mountain 2 (Background / Bottom): Goes Down */}
         <motion.img
@@ -60,13 +60,13 @@ const ParallaxTransitionSection = () => {
           src="/bg/mountain1.png"
           alt="Mountain 1"
           style={{ x: mountain1X }}
-          className="absolute bottom-0 right-0 mx-auto w-[90%] md:w-[80%] h-auto z-20 pointer-events-none"
+          className="absolute bottom-0 right-0 mx-auto w-full md:w-[80%] h-auto z-20 pointer-events-none"
         />
 
         {/* --- ALUMNI SECTION OVER MOUNTAINS --- */}
         <motion.div
           style={{ y: alumniY, opacity: alumniOpacity }}
-          className="absolute top-10 left-0 w-full md:w-1/2 h-auto z-25 flex flex-col items-center justify-center pointer-events-auto"
+          className="absolute top-16 md:top-10 left-0 w-full md:w-1/2 h-auto z-25 flex flex-col items-center justify-center pointer-events-auto"
         >
           <AlumniSection />
         </motion.div>
@@ -75,7 +75,7 @@ const ParallaxTransitionSection = () => {
 
         <motion.div
           style={{ y: oceanY }}
-          className="absolute bottom-0 left-0 w-full h-[40vh] z-30 overflow-hidden pointer-events-none"
+          className="absolute bottom-0 left-0 w-full h-[30vh] md:h-[40vh] z-30 overflow-hidden pointer-events-none"
         >
           <video
             src="/0001-0250 (1)_1.mp4"
@@ -83,7 +83,7 @@ const ParallaxTransitionSection = () => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-100 brightness-120"
           />
         </motion.div>
 
@@ -92,15 +92,15 @@ const ParallaxTransitionSection = () => {
           src="/bg/tree.png"
           alt="Tree"
           style={{ y: treeY, scale: treeScale }}
-          className="absolute bottom-30 left-10 w-[55%] md:w-[50%] lg:w-[30%] h-auto z-40 pointer-events-none"
+          className="absolute bottom-20 md:bottom-30 left-0 md:left-10 w-[70%] md:w-[50%] lg:w-[30%] h-auto z-40 pointer-events-none"
         />
 
         {/* --- SCHEDULE SECTION OVER OCEAN --- */}
         <motion.div
           style={{ y: scheduleY, opacity: scheduleOpacity }}
-          className="absolute top-10 left-0 w-full h-auto z-50 flex flex-col items-center justify-center pointer-events-auto"
+          className="absolute top-16 md:top-10 left-0 w-full h-auto z-50 flex flex-col items-center justify-center pointer-events-auto"
         >
-          <ScheduleSection />
+          <SponserSection />
         </motion.div>
       </div>
     </section>

@@ -1,5 +1,17 @@
+import { useState } from "react";
 import UnderwaterBubbleSection from "../animations/UnderwaterBubbleSection";
+import SwimmingFish from "../animations/SwimmingFish";
+import Footer from "../components/Footer";
+import FaqCard from "../cards/FaqCard";
+import { faqData } from "../data/FaqData";
+
 const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleToggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section
       id="faq"
@@ -8,41 +20,28 @@ const FAQSection = () => {
       {/* Absolute background bubbles spanning the section */}
       <UnderwaterBubbleSection />
 
+      {/* Ambient background swimming fish */}
+      <SwimmingFish />
+
       {/* FAQ Content Layered on Top */}
-      <div className="relative z-10 text-white w-full max-w-4xl px-4 py-20 flex flex-col items-center">
-        <h2 className="text-4xl md:text-6xl font-bold mb-12 drop-shadow-lg text-center">
+      <div className="relative z-10 text-white w-full max-w-4xl px-4 py-20 flex flex-col items-center mx-auto">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-8 md:mb-12 drop-shadow-lg text-center">
           Frequently Asked Questions
         </h2>
 
-        <div className="w-full space-y-4">
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 w-full border border-white/20 hover:bg-white/20 transition-all cursor-pointer">
-            <h3 className="text-xl font-semibold mb-2">What is a hackathon?</h3>
-            <p className="text-white/80">
-              A hackathon is an invention marathon where students collaborate to
-              build creative software or hardware projects from scratch within a
-              set timeframe.
-            </p>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 w-full border border-white/20 hover:bg-white/20 transition-all cursor-pointer">
-            <h3 className="text-xl font-semibold mb-2">Who can attend?</h3>
-            <p className="text-white/80">
-              Any undergraduate or graduate university student can attend! No
-              prior experience is required.
-            </p>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 w-full border border-white/20 hover:bg-white/20 transition-all cursor-pointer">
-            <h3 className="text-xl font-semibold mb-2">
-              How much does it cost?
-            </h3>
-            <p className="text-white/80">
-              It is completely free! We will provide meals, swag, workspace, and
-              Wi-Fi for all attendees.
-            </p>
-          </div>
+        <div className="w-full bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 shadow-2xl space-y-2">
+          {faqData.map((faq, index) => (
+            <FaqCard
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === index}
+              onToggle={() => handleToggle(index)}
+            />
+          ))}
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

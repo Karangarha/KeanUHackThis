@@ -6,3 +6,7 @@ html {
     font-family: 'Orbitron Variable', sans-serif;
     overflow-x: hidden;
 }
+
+.bg-main-gradient {
+    background: linear-gradient(115deg, #62cff4, #2c67f2);
+}

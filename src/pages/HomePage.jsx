@@ -10,11 +10,8 @@ const HomePage = () => {
     <>
       <MainSection />
       <ThemeSection />
-      {/* Global Background Wrapper for Sponsors and Parallax to ensure seamless blending */}
-      <div className="w-full bg-[linear-gradient(115deg,#62cff4,#2c67f2)]">
-        <SponserSection />
-        <ParallaxTransitionSection />
-      </div>
+
+      <ParallaxTransitionSection />
       <FAQSection />
       <ContectSection />
     </>
