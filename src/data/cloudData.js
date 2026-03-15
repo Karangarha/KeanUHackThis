@@ -1,0 +1,31 @@
+const cloudData = [
+    // Original widths restored, positions scattered across the screen
+    { imageID: 1, side: "left", top: "-10%", baseX: "-15vw", width: "655px" },
+    { imageID: 2, side: "right", top: "5%", baseX: "35vw", width: "556px" },
+    { imageID: 3, side: "left", top: "-5%", baseX: "-5vw", width: "357px" },
+    { imageID: 4, side: "right", top: "20%", baseX: "35vw", width: "581px" },
+    { imageID: 5, side: "right", top: "0%", baseX: "-25vw", width: "486px" },
+    { imageID: 6, side: "left", top: "25%", baseX: "12vw", width: "697px" },
+    { imageID: 7, side: "left", top: "40%", baseX: "-35vw", width: "1169px" },
+    { imageID: 8, side: "right", top: "30%", baseX: "45vw", width: "320px" },
+    { imageID: 9, side: "right", top: "45%", baseX: "0vw", width: "553px" },
+    { imageID: 10, side: "left", top: "80%", baseX: "-12vw", width: "495px" },
+    { imageID: 11, side: "right", top: "65%", baseX: "20vw", width: "420px" },
+    { imageID: 12, side: "right", top: "60%", baseX: "-30vw", width: "722px" },
+    { imageID: 13, side: "left", top: "10%", baseX: "-8vw", width: "987px" },
+    { imageID: 14, side: "right", top: "75%", baseX: "15vw", width: "551px" },
+    { imageID: 7, side: "right", top: "20%", baseX: "40vw", width: "1169px" },
+    { imageID: 1, side: "left", top: "15%", baseX: "55vw", width: "655px" },
+    { imageID: 13, side: "right", top: "55%", baseX: "-45vw", width: "987px" },
+    { imageID: 7, side: "left", top: "70%", baseX: "5vw", width: "1169px" },
+    { imageID: 2, side: "right", top: "85%", baseX: "-55vw", width: "556px" },
+    { imageID: 6, side: "left", top: "60%", baseX: "50vw", width: "697px" },
+    { imageID: 4, side: "right", top: "-15%", baseX: "5vw", width: "581px" },
+    { imageID: 9, side: "left", top: "95%", baseX: "-5vw", width: "553px" },
+    { imageID: 13, side: "right", top: "35%", baseX: "-15vw", width: "987px" },
+    { imageID: 7, side: "left", top: "5%", baseX: "15vw", width: "1169px" },
+    { imageID: 6, side: "right", top: "85%", baseX: "40vw", width: "697px" },
+    { imageID: 1, side: "left", top: "45%", baseX: "-55vw", width: "655px" },
+];
+
+export default cloudData;

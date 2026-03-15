@@ -21,8 +21,22 @@ const glowAnimation = {
 
 const MainSection = () => {
   return (
-    <section id="home" className="h-screen w-full">
-      <div className="flex flex-col justify-center items-center h-full text-white gap-1">
+    <section
+      id="home"
+      className="relative h-screen w-full overflow-hidden bg-black"
+    >
+      {/* Background Video */}
+      <video
+        src="/hackathon_wallpaper.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Foreground Content */}
+      <div className="relative z-10 flex flex-col justify-center items-center h-full text-white gap-2 md:gap-1 px-4 text-center bg-black/30">
         <motion.div {...glowAnimation}>
           <TextType
             text="KeanUHackThis"
@@ -32,7 +46,7 @@ const MainSection = () => {
             pauseDuration={2000}
             deletingSpeed={30}
             loop={false}
-            className="text-8xl font-bold"
+            className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold"
             showCursor={false}
             hideCursorWhileTyping={true}
             cursorCharacter="|"
@@ -46,24 +60,24 @@ const MainSection = () => {
           />
         </motion.div>
         <div>
-          <h3 className="text-4xl font-bold">24Hour Hackathon Spring 2026</h3>
+          <h3 className="text-xl sm:text-2xl md:text-4xl font-bold">24Hour Hackathon Spring 2026</h3>
         </div>
         <div>
-          <p className="text-xl font-bold">
+          <p className="text-sm sm:text-lg md:text-xl font-medium md:font-bold opacity-90">
             April 25-26, Kean University, Union, New Jersey
           </p>
         </div>
-        <div className="mt-10">
+        <div className="mt-6 md:mt-10">
           <motion.button
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="text-4xl font-bold border border-white rounded-full px-8 py-2 hover:bg-white/10 hover:backdrop-blur-sm transition-all duration-200"
+            className="text-2xl md:text-4xl font-bold border-2 border-white rounded-full px-6 py-2 md:px-8 md:py-3 hover:bg-white/10 hover:backdrop-blur-sm transition-all duration-200 shadow-lg"
           >
             Register Now
           </motion.button>
         </div>
-        <div className="mt-1">
+        <div className="mt-4 md:mt-1 scale-75 sm:scale-90 md:scale-100">
           <CountdownTimer targetDate="2026-04-25" />
         </div>
       </div>

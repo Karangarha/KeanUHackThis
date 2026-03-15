@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   Home,
   Handshake,
@@ -44,13 +45,22 @@ const Navbar = () => {
     },
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <nav className="flex justify-center fixed w-full">
+    <nav className="flex justify-center fixed w-full z-[100]">
       <Dock
         items={navLinks}
-        panelHeight={68}
-        baseItemSize={50}
-        magnification={70}
+        panelHeight={isMobile ? 55 : 68}
+        baseItemSize={isMobile ? 35 : 50}
+        magnification={isMobile ? 55 : 70}
       />
     </nav>
   );
