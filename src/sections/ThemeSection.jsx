@@ -1023,6 +1023,8 @@ const ThemeSection = () => {
           </div>
         </div>
       </div>
+      {/* Invisible anchor for the schedule section (which appears at the end of this 800vh container) */}
+      <div id="schedule" style={{ position: "absolute", bottom: 0, width: "100%", height: "1px", pointerEvents: "none" }} />
     </section>
   );
 };

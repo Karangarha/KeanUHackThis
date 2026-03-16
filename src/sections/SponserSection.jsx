@@ -6,7 +6,6 @@ import SponserCard from "../cards/SponsersCard.jsx";
 const SponserSection = () => {
   return (
     <section
-      id="sponser"
       className="w-full h-full py-4 flex flex-col items-center justify-center relative z-10"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-10 flex flex-col items-center">

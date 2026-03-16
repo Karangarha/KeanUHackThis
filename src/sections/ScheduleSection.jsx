@@ -30,7 +30,6 @@ const ScheduleSection = () => {
 
   return (
     <div
-      id="schedule"
       ref={containerRef}
       className="relative w-full py-24 flex flex-col items-center pointer-events-auto"
     >

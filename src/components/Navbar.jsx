@@ -8,40 +8,57 @@ import {
   CircleQuestionMark,
   Mail,
 } from "lucide-react";
+import { useLenis } from "./SmoothScroll";
 import Dock from "../assets/Dock";
 
 const Navbar = () => {
+  const lenis = useLenis();
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element && lenis) {
+      lenis.scrollTo(element, { offset: 0 });
+    } else if (element) {
+      // Fallback just in case Lenis isn't ready
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const navLinks = [
-    { icon: <Home size={24} color="white" />, label: "Home", href: "#home" },
-    {
-      icon: <Handshake size={24} color="white" />,
-      label: "Sponser",
-      href: "#sponser",
+    { 
+      icon: <Home size={24} color="white" />, 
+      label: "Home", 
+      onClick: () => scrollToSection("home") 
     },
     {
       icon: <Lightbulb size={24} color="white" />,
       label: "Theme",
-      href: "#theme",
+      onClick: () => scrollToSection("theme")
     },
     {
       icon: <Calendar size={24} color="white" />,
       label: "Schedule",
-      href: "#schedule",
+      onClick: () => scrollToSection("schedule")
     },
     {
       icon: <User size={24} color="white" />,
       label: "Alumini",
-      href: "#alumini",
+      onClick: () => scrollToSection("alumini")
+    },
+    {
+      icon: <Handshake size={24} color="white" />,
+      label: "Sponser",
+      onClick: () => scrollToSection("sponser")
     },
     {
       icon: <CircleQuestionMark size={24} color="white" />,
       label: "FAQ",
-      href: "#faq",
+      onClick: () => scrollToSection("faq")
     },
     {
       icon: <Mail size={24} color="white" />,
       label: "Contact",
-      href: "#contact",
+      onClick: () => scrollToSection("contact")
     },
   ];
 

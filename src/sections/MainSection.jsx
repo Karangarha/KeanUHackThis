@@ -67,7 +67,10 @@ const MainSection = () => {
             April 25-26, Kean University, Union, New Jersey
           </p>
         </div>
-        <div className="mt-6 md:mt-10">
+        <div className="mt-6 md:mt-10 flex flex-col items-center gap-2">
+          <p className="text-sm md:text-base text-white/80 font-medium italic">
+            Registration closes on March 20th
+          </p>
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
