@@ -45,6 +45,10 @@ const ParallaxTransitionSection = () => {
       ref={containerRef}
       className="relative w-full h-[300vh] bg-main-gradient"
     >
+      {/* Invisible anchors for Lenis to scroll to within this 300vh space */}
+      <div id="alumini" className="absolute top-0 w-full h-[1px] pointer-events-none" />
+      <div id="sponser" className="absolute top-[150vh] w-full h-[1px] pointer-events-none" />
+
       <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[linear-gradient(-115deg,#2c67f2,#62cff4)]">
         {/* --- MOUNTAINS --- */}
         {/* Mountain 2 (Background / Bottom): Goes Down */}

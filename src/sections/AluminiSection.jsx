@@ -7,26 +7,31 @@ const alumni = [
     name: "Andrea",
     role: "Cybersecurity Analyst @Deloitte",
     image: "public/alumnis/alumni_3.png",
+    linkedin: "https://www.linkedin.com/in/andreabalcacer/"
   },
   {
     name: "Gillian",
     role: "Software Engineer @Prudential",
     image: "public/alumnis/alumni_2.png",
+    linkedin: "https://www.linkedin.com/in/gillianmroberts4/"
   },
   {
     name: "Joseph",
     role: "Cyber Research Engineer @Lockheed Martin",
     image: "public/alumnis/alumni_1.jpg",
+    linkedin: "https://www.linkedin.com/in/joseph-waldron-a24038201/"
   },
   {
     name: "Wilbert",
     role: "Pathways Associate Systems Engineer @Northrop Grumman",
     image: "public/alumnis/alumni_5.png",
+    linkedin: "https://www.linkedin.com/in/wilbertvillalobos/"
   },
   {
     name: "A'nya",
     role: "Data Management Professional @Bloomberg",
     image: "public/alumnis/alumni_4.jpg",
+    linkedin: "https://www.linkedin.com/in/a-nya-carr/"
   },
 ];
 
@@ -120,9 +125,9 @@ const AlumniSection = () => {
               <p className="text-xs md:text-sm text-blue-200 mt-1 md:mt-2">
                 {person.role}
               </p>
-              <div className="mt-4 md:mt-6 p-2 bg-blue-600 rounded-lg">
-                <span className="text-xs font-bold">in</span>
-              </div>
+              <a href={person.linkedin || "#"} target="_blank" rel="noopener noreferrer" className="mt-4 md:mt-6 cursor-pointer hover:scale-110 transition-transform">
+                <img src="/alumnis/linkedIn.png" alt="LinkedIn" className="w-8 h-8 md:w-10 md:h-10 rounded-md" />
+              </a>
             </motion.div>
           );
         })}
