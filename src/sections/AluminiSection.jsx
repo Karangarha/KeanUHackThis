@@ -6,31 +6,31 @@ const alumni = [
   {
     name: "Andrea",
     role: "Cybersecurity Analyst @Deloitte",
-    image: "public/alumnis/alumni_3.png",
+    image: "alumnis/alumni_3.png",
     linkedin: "https://www.linkedin.com/in/andreabalcacer/"
   },
   {
     name: "Gillian",
     role: "Software Engineer @Prudential",
-    image: "public/alumnis/alumni_2.png",
+    image: "alumnis/alumni_2.png",
     linkedin: "https://www.linkedin.com/in/gillianmroberts4/"
   },
   {
     name: "Joseph",
     role: "Cyber Research Engineer @Lockheed Martin",
-    image: "public/alumnis/alumni_1.jpg",
+    image: "alumnis/alumni_1.jpg",
     linkedin: "https://www.linkedin.com/in/joseph-waldron-a24038201/"
   },
   {
     name: "Wilbert",
     role: "Pathways Associate Systems Engineer @Northrop Grumman",
-    image: "public/alumnis/alumni_5.png",
+    image: "alumnis/alumni_5.png",
     linkedin: "https://www.linkedin.com/in/wilbertvillalobos/"
   },
   {
     name: "A'nya",
     role: "Data Management Professional @Bloomberg",
-    image: "public/alumnis/alumni_4.jpg",
+    image: "alumnis/alumni_4.jpg",
     linkedin: "https://www.linkedin.com/in/a-nya-carr/"
   },
 ];
